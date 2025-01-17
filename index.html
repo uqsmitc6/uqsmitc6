@@ -3,83 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Website</title>
+    <title>Entrepreneurship Journey</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
         }
-        
-        header {
-            text-align: center;
-            padding: 40px 0;
-            background-color: #f5f5f5;
-            margin-bottom: 30px;
+        .phase-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            min-height: 200px;
         }
-        
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .contact-links a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        
-        .contact-links a:hover {
-            text-decoration: underline;
+        .phase-card.what {
+            grid-column: span 2;
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Your Name</h1>
-        <p>Web Developer | Designer | Creator</p>
-        <div class="contact-links">
-            <a href="https://github.com/yourusername">GitHub</a>
-            <a href="mailto:your.email@example.com">Email</a>
-            <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-2">Entrepreneurship Journey</h1>
+            <p class="text-gray-600">Track your entrepreneurial development through guided discovery</p>
+        </header>
+
+        <!-- Student Input Section -->
+        <div class="max-w-md mx-auto mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Begin Your Journey</h2>
+                <div class="flex gap-4">
+                    <input type="text" 
+                           placeholder="Enter Student Number" 
+                           class="flex-1 p-2 border rounded"
+                           id="studentInput">
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                            onclick="startJourney()">
+                        Start
+                    </button>
+                </div>
+            </div>
         </div>
-    </header>
 
-    <div class="section">
-        <h2>About Me</h2>
-        <p>Hello! I'm a [your profession/background] based in [your location]. I'm passionate about [your interests/specialties].</p>
+        <!-- Journey Grid -->
+        <div class="journey-grid">
+            <!-- Discovery Phase -->
+            <div class="phase-card">
+                <h3 class="font-bold mb-2">You</h3>
+                <div id="you-content" class="text-gray-600">
+                    Enter your student number to load your journey...
+                </div>
+            </div>
+            <div class="phase-card">
+                <h3 class="font-bold mb-2">Who</h3>
+                <div id="who-content" class="text-gray-600">
+                    Enter your student number to load your journey...
+                </div>
+            </div>
+
+            <!-- Design Phase -->
+            <div class="phase-card">
+                <h3 class="font-bold mb-2">How</h3>
+                <div id="how-content" class="text-gray-600">
+                    Enter your student number to load your journey...
+                </div>
+            </div>
+            <div class="phase-card">
+                <h3 class="font-bold mb-2">Why</h3>
+                <div id="why-content" class="text-gray-600">
+                    Enter your student number to load your journey...
+                </div>
+            </div>
+
+            <!-- Deploy Phase -->
+            <div class="phase-card what">
+                <h3 class="font-bold mb-2">What</h3>
+                <div id="what-content" class="text-gray-600">
+                    Enter your student number to load your journey...
+                </div>
+            </div>
+        </div>
+
+        <!-- Bot Container (hidden initially) -->
+        <div id="bot-container" class="max-w-2xl mx-auto mt-8 hidden">
+            <!-- Zapier Chat Bot will be embedded here -->
+        </div>
     </div>
 
-    <div class="section">
-        <h2>Projects</h2>
-        <ul>
-            <li>
-                <h3>Project 1</h3>
-                <p>Description of your first project and its impact.</p>
-            </li>
-            <li>
-                <h3>Project 2</h3>
-                <p>Description of your second project and its impact.</p>
-            </li>
-        </ul>
-    </div>
+    <script>
+        function startJourney() {
+            const studentNumber = document.getElementById('studentInput').value;
+            if (!studentNumber) {
+                alert('Please enter a student number');
+                return;
+            }
+            
+            // Here we would:
+            // 1. Validate the student number
+            // 2. Show the chat bot
+            // 3. Load any existing data
+            document.getElementById('bot-container').classList.remove('hidden');
+            
+            // Simulated data load - replace with actual API call
+            loadStudentData(studentNumber);
+        }
 
-    <div class="section">
-        <h2>Skills</h2>
-        <p>List your key skills and technologies you work with.</p>
-    </div>
+        async function loadStudentData(studentNumber) {
+            // This would be replaced with actual API call to Google Sheets
+            // For now, just showing the structure
+            try {
+                // Simulate API call
+                const data = {
+                    you: "Loading student data...",
+                    who: "Loading student data...",
+                    why: "Loading student data...",
+                    what: "Loading student data...",
+                    how: "Loading student data..."
+                };
+
+                // Update content
+                Object.keys(data).forEach(key => {
+                    const element = document.getElementById(`${key}-content`);
+                    if (element) {
+                        element.textContent = data[key];
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading student data:', error);
+            }
+        }
+    </script>
 </body>
 </html>
